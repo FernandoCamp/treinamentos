@@ -41,4 +41,9 @@ class AnagramaTest {
         assertFalse(Anagrama.verificaAnagrama("Pand", "Panda", true));
     }
 
+    @Test
+    void testParaStringsVazias() {
+        assertTrue(Anagrama.verificaAnagrama("", ""));
+    }
+
 }
