@@ -10,6 +10,9 @@ public class Anagrama {
 
     public static boolean verificaAnagrama(String primeiraPalavra, String segundaPalavra) {
 
+        if (primeiraPalavra.length() != segundaPalavra.length())
+            return false;
+
         var caracteresComSuasQuantidades = contabilizaCadaCaractereDaPalavra(primeiraPalavra);
 
         for (char caractere : segundaPalavra.toCharArray()) {
