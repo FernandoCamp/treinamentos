@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AnagramaTest {
 
-    @Test
     void verificaSeEhAnagrama() {
         var nome = Anagrama.contabilizaCadaCaractereDaPalavra("Leopoldo");
 
@@ -20,6 +19,7 @@ class AnagramaTest {
     void testaAnagramaSemSucesso() {
         assertFalse(Anagrama.verificaAnagrama("Pandora", "Leopoldo"));
     }
+
     @Test
     void testaAnagramaComSucesso() {
         assertTrue(Anagrama.verificaAnagrama("Pandora", "Parodna"));
