@@ -1,12 +1,12 @@
-package br.com.fernando;
+package br.com.fernando.anagrama;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static br.com.fernando.ContadorCaracteres.contabilizaCadaCaractereDaPalavra;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -24,7 +24,7 @@ public class ContadorCaracteresTest {
     @ParameterizedTest(name = "Esperando {0} caractere(s) \"{1}\" na palavra {2}")
     @MethodSource("parametrosDeContabilizacaoDePalavras")
     void verificaSeEhAnagrama(int valorEsperado, Character caractereSelecionado, String palavra) {
-        assertEquals(valorEsperado, contabilizaCadaCaractereDaPalavra(palavra).get(caractereSelecionado));
+        Assertions.assertEquals(valorEsperado, ContadorCaracteres.contabilizaCadaCaractereDaPalavra(palavra).get(caractereSelecionado));
     }
 
 }

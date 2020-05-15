@@ -1,4 +1,4 @@
-package br.com.fernando;
+package br.com.fernando.anagrama;
 
 import java.util.HashMap;
 import java.util.Map;
