@@ -1,8 +1,5 @@
 package br.com.fernando;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Anagrama {
 
     private Anagrama() {
@@ -12,7 +9,7 @@ public class Anagrama {
 
         if (primeiraPalavra.length() != segundaPalavra.length()) return false;
 
-        var caracteresComSuasQuantidades = contabilizaCadaCaractereDaPalavra(primeiraPalavra);
+        var caracteresComSuasQuantidades = ContadorCaracteres.contabilizaCadaCaractereDaPalavra(primeiraPalavra);
 
         for (char caractere : segundaPalavra.toCharArray()) {
             caracteresComSuasQuantidades.merge(caractere, -1, Integer::sum);
@@ -24,14 +21,6 @@ public class Anagrama {
     public static boolean verificaAnagrama(String primeiraPalavra, String segundaPalavra, boolean caseSensitive) {
         if (caseSensitive) return verificaAnagrama(primeiraPalavra, segundaPalavra);
         return verificaAnagrama(primeiraPalavra.toUpperCase(), segundaPalavra.toUpperCase());
-    }
-
-    public static Map<Character, Integer> contabilizaCadaCaractereDaPalavra(String palavra) {
-        var caracteresPalavra = new HashMap<Character, Integer>();
-        for (char caractere : palavra.toCharArray()) {
-            caracteresPalavra.merge(caractere, 1, Integer::sum);
-        }
-        return caracteresPalavra;
     }
 
 }
