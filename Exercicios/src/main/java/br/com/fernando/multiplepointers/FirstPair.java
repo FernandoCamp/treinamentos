@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MultiplePointers {
+public class FirstPair {
 
-    private MultiplePointers() {
+    private FirstPair() {
     }
 
     public static List<Integer> returnPairNumbers(List<Integer> numbers) {

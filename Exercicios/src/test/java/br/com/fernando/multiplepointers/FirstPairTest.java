@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-class MultiplePointersTest {
+class FirstPairTest {
 
     static Stream<Arguments> validPairList() {
         return Stream.of(
@@ -30,12 +30,12 @@ class MultiplePointersTest {
     @ParameterizedTest
     @MethodSource("validPairList")
     void returnsFirstPairInTheList(List<Integer> expectedValues, List<Integer> valuesInput) {
-        assertEquals(expectedValues, MultiplePointers.returnPairNumbers(valuesInput));
+        assertEquals(expectedValues, FirstPair.returnPairNumbers(valuesInput));
     }
 
     @Test
     void returnsNullBecauseThereAreNoPairs() {
-        assertEquals(Collections.emptyList(), MultiplePointers.returnPairNumbers(asList(-3, -2, 0, 1, 4)));
+        assertEquals(Collections.emptyList(), FirstPair.returnPairNumbers(asList(-3, -2, 0, 1, 4)));
     }
 
 }
