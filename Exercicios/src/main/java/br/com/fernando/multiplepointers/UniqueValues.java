@@ -1,17 +1,18 @@
 package br.com.fernando.multiplepointers;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UniqueValues {
 
-    public static List<Integer> returnUniqueValues(List<Integer> values) {
-        int i = 0;
+    private UniqueValues() {
+    }
+
+    public static List<Integer> returnUniqueValuesInOrderedList(List<Integer> values) {
         List<Integer> uniqueValues = new ArrayList<>();
-        for (int j = 1; j <= values.size(); j++) {
-            if (!values.get(j).equals(values.get(i))) {
-                uniqueValues.add(values.get(i ++));
+        for (Integer value : values) {
+            if (uniqueValues.isEmpty() || !value.equals(uniqueValues.get(uniqueValues.size() - 1))) {
+                uniqueValues.add(value);
             }
         }
         return uniqueValues;
