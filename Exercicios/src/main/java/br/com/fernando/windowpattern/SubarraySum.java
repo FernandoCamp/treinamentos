@@ -7,16 +7,12 @@ public class SubarraySum {
     private SubarraySum() {
     }
 
-    public static Integer maxSubarraySum(List<Integer> numbers, Integer sequencyOfNumbers) {
-        int maxSum = sumFirstNNumbers(numbers, sequencyOfNumbers);
-        int tempSum = maxSum;
+    public static Integer maxSubarraySum(List<Integer> numbers, Integer sequenceOfNumbers) {
+        return operationSubarraySum(numbers, sequenceOfNumbers, Math::max);
+    }
 
-        for (int i = 0; i < numbers.size() - sequencyOfNumbers; i++) {
-            tempSum = tempSum - numbers.get(i) + numbers.get(i + sequencyOfNumbers);
-            maxSum = Math.max(maxSum, tempSum);
-        }
-
-        return maxSum;
+    public static Integer minSubarraySum(List<Integer> numbers, int sequenceOfNumbers) {
+        return operationSubarraySum(numbers, sequenceOfNumbers, Math::min);
     }
 
     public static int sumFirstNNumbers(List<Integer> numbers, Integer amountOfSummedNumbers) {
@@ -26,6 +22,22 @@ public class SubarraySum {
         }
 
         return sum;
+    }
+
+    public static Integer operationSubarraySum(List<Integer> numbers, int sequenceOfNumbers, Operation operation) {
+        int sum = sumFirstNNumbers(numbers, sequenceOfNumbers);
+        int tempSum = sum;
+
+        for (int i = 0; i < numbers.size() - sequenceOfNumbers; i++) {
+            tempSum = tempSum - numbers.get(i) + numbers.get(i + sequenceOfNumbers);
+            sum = operation.expectedValues(sum, tempSum);
+        }
+
+        return sum;
+    }
+
+    private interface Operation {
+        int expectedValues(int a, int b);
     }
 
 }

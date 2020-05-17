@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 import static br.com.fernando.windowpattern.SubarraySum.*;
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class SubarraySumTest {
@@ -27,6 +27,7 @@ class SubarraySumTest {
     static Stream<Arguments> arraysExpectedBiggerNNumbersAndArraysAndNumbersSequence() {
         return Stream.of(
                 arguments(11, asList(4, 5, 6, 2, 2, 2), 2),
+                arguments(73, asList(22, 5, 6, 8, 10, 55), 3),
                 arguments(27, asList(4, 5, 6, 2, 2, 25), 2),
                 arguments(57, asList(22, 5, 6, 2, 2, 55), 2),
                 arguments(11, asList(-1, -3, 4, 5, 6, 2, 2, 2), 2)
@@ -37,6 +38,20 @@ class SubarraySumTest {
     @MethodSource("arraysExpectedBiggerNNumbersAndArraysAndNumbersSequence")
     void countMaxSumOfSubarray(int expectedValue, List<Integer> numbers, int sequenceOfNumbers) {
         assertEquals(expectedValue, maxSubarraySum(numbers, sequenceOfNumbers));
+    }
+
+    static Stream<Arguments> arraysExpectedBiggerNNumbersAndArraysAndNumbersSequenceForMinSubarray() {
+        return Stream.of(
+                arguments(4, asList(4, 5, 6, 2, 2, 2), 2),
+                arguments(9, asList(4, 5, 6, 8, 2, 25), 2),
+                arguments(0, asList(-1, -3, 4, 5, 6, 2, 2, 2), 3)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arraysExpectedBiggerNNumbersAndArraysAndNumbersSequenceForMinSubarray")
+    void countMinSumOfSubarray(int expectedValue, List<Integer> numbers, int sequenceOfNumbers) {
+        assertEquals(expectedValue, minSubarraySum(numbers, sequenceOfNumbers));
     }
 
 }
