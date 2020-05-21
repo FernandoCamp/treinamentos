@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import static br.com.fernando.windowpattern.SubarraySum.*;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class SubarraySumTest {
@@ -52,6 +53,26 @@ class SubarraySumTest {
     @MethodSource("arraysExpectedBiggerNNumbersAndArraysAndNumbersSequenceForMinSubarray")
     void countMinSumOfSubarray(int expectedValue, List<Integer> numbers, int sequenceOfNumbers) {
         assertEquals(expectedValue, minSubarraySum(numbers, sequenceOfNumbers));
+    }
+
+    static Stream<Arguments> arraysExpectedBiggerNNumbersAndArraysAndNumbersSequenceSecondExercise() {
+        return Stream.of(
+                arguments(asList(100, 200, 300, 400), 2, 700),
+                arguments(asList(1, 4, 2, 10, 23, 3, 1, 0, 20), 4, 39),
+                arguments(asList(-3, 4, 0, -2, 6, -1), 2, 5),
+                arguments(asList(3, -2, 7, -4, 1, -1, 4, -2, 1), 2, 5)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arraysExpectedBiggerNNumbersAndArraysAndNumbersSequenceSecondExercise")
+    void countMaxSumOfSubarraySecondExercise(List<Integer> numbers, int lenghtOfSubarray, int expectedValue) {
+        assertEquals(expectedValue, maxSubarraySum(numbers, lenghtOfSubarray));
+    }
+
+    @Test
+    void testIfReturnNullWhenLengthOfSubarrayIsBiggerThenArray() {
+        assertNull(maxSubarraySum(asList(2, 3), 3));
     }
 
 }

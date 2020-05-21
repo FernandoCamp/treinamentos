@@ -40,4 +40,24 @@ public class SubarraySum {
         int expectedValues(int a, int b);
     }
 
+    public static Integer maxSubarraySum(List<Integer> numbers, int lengthOfSubarray) {
+
+        if (numbers.size() < lengthOfSubarray) return null;
+
+        int maxSum = 0;
+
+        for (int i = 0; i < lengthOfSubarray; i++) {
+            maxSum += numbers.get(i);
+        }
+
+        int tempSum = maxSum;
+
+        for (int i = 0; i < numbers.size() - lengthOfSubarray; i++) {
+            tempSum = numbers.get(i + lengthOfSubarray) + tempSum - numbers.get(i);
+            if (tempSum > maxSum) maxSum = tempSum;
+        }
+
+        return maxSum;
+    }
+
 }
