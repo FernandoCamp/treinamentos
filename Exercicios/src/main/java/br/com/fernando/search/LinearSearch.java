@@ -4,6 +4,9 @@ import java.util.List;
 
 public class LinearSearch {
 
+    private LinearSearch() {
+    }
+
     public static int linearSearch(List<Integer> elements, int desiredValue) {
 
         for (int i = 0; i < elements.size(); i++) {
